@@ -1,0 +1,71 @@
+DriverManager.getConnection("jdbc:derby:USERDB;create=true")
+DriverManager.initialize: jdbc.drivers = null
+JDBC DriverManager initialized
+    trying org.apache.derby.jdbc.AutoloadedDriver
+SQLState(08004) vendor code(40000)
+java.sql.SQLNonTransientConnectionException: Connection refused : java.lang.OutOfMemoryError
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<clinit>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at UserDatabase.<init>(UserDatabase.java:49)
+	at TestUserDatabase.main(TestUserDatabase.java:3)
+Caused by: ERROR 08004: Connection refused : java.lang.OutOfMemoryError
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 13 more
+getConnection returning org.apache.derby.jdbc.AutoloadedDriver
+SQLState(42X05) vendor code(30000)
+java.sql.SQLSyntaxErrorException: Table/View 'USERTABLE' does not exist.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.wrapInSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.handleException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleException(Unknown Source)
+	at org.apache.derby.impl.jdbc.ConnectionChild.handleException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedStatement.execute(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedStatement.execute(Unknown Source)
+	at UserDatabase.checkTable(UserDatabase.java:205)
+	at UserDatabase.<init>(UserDatabase.java:54)
+	at TestUserDatabase.main(TestUserDatabase.java:3)
+Caused by: ERROR 42X05: Table/View 'USERTABLE' does not exist.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.sql.compile.FromBaseTable.bindTableDescriptor(Unknown Source)
+	at org.apache.derby.impl.sql.compile.FromBaseTable.bindNonVTITables(Unknown Source)
+	at org.apache.derby.impl.sql.compile.FromList.bindTables(Unknown Source)
+	at org.apache.derby.impl.sql.compile.SelectNode.bindNonVTITables(Unknown Source)
+	at org.apache.derby.impl.sql.compile.DMLStatementNode.bindTables(Unknown Source)
+	at org.apache.derby.impl.sql.compile.UpdateNode.bindStatement(Unknown Source)
+	at org.apache.derby.impl.sql.GenericStatement.prepMinion(Unknown Source)
+	at org.apache.derby.impl.sql.GenericStatement.prepare(Unknown Source)
+	at org.apache.derby.impl.sql.conn.GenericLanguageConnectionContext.prepareInternalStatement(Unknown Source)
+	... 5 more
+DriverManager.getConnection("jdbc:derby:;shutdown=true")
+    trying org.apache.derby.jdbc.AutoloadedDriver
+DriverManager.deregisterDriver: org.apache.derby.jdbc.AutoloadedDriver@64d7f7e0
+SQLState(XJ015) vendor code(50000)
+java.sql.SQLException: Derby system shutdown.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at UserDatabase.shutdownDatabase(UserDatabase.java:187)
+	at TestUserDatabase.main(TestUserDatabase.java:18)
+Caused by: ERROR XJ015: Derby system shutdown.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 11 more
+getConnection failed: java.sql.SQLException: Derby system shutdown.
